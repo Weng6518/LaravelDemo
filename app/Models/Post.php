@@ -7,6 +7,7 @@ namespace App;
 
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 
 
@@ -29,5 +30,24 @@ class Post extends Model
         'content'
 
     ];
+/**
 
+ * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+
+ */
+
+public function subject()
+
+{
+
+    return $this->belongsTo(Subject::class);
+
+} 
+public function user()
+
+{
+
+    return $this->belongsTo(Subject::class);
+
+} 
 } 

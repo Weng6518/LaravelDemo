@@ -49,3 +49,88 @@ Route::get('/test', function(){
     return App\Models\Post::all();
 
 }); 
+
+Route::get('/test', function(){
+
+    return App\Models\Post::find(1);
+
+}); 
+
+Route::get('/edit', function(){
+
+    $post = App\Models\Post::find(1);
+
+    $post->content = 'Laravel demo';
+
+    $post->save();
+
+    return $post;
+
+}); 
+
+
+Route::get('/add', function(){
+
+    $post = new App\Models\Post;
+ 
+     $post->content = 'Laravel demo';
+ 
+     $post->save();
+ 
+     return $post; 
+ 
+ }); 
+
+ Route::get('/delete', function(){
+
+    $post = App\Models\Post::find(1);
+
+    $post->delete();
+
+}); 
+
+Route::get('/mass delete', function(){
+
+    $posts = App\Models\Post::destroy([2, 3]);
+
+    return $posts;
+
+}); 
+
+Route::get('/test', function(){
+
+    $subject = Subject::find(1);
+
+    $posts = $subject->posts;
+
+    return $posts;
+
+}); 
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::resource('posts', 'App\Http\Controllers\PostController'); 
+
+Route::get('/test', function(){
+
+    var_dump(Auth::check());
+
+}); 
+
+Route::get('/test', function(){
+
+    echo Auth::user();
+
+});  
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
